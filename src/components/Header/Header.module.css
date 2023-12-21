@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
+  font-size: 23px; text-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+  background-color: #6a994e;
+  padding: 15px 10px
+}

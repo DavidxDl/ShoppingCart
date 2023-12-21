@@ -1,4 +1,5 @@
 :root {
+  --bg-color: #f2e8cf;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -9,4 +10,11 @@ body {
   box-sizing: border-box;
   padding:0;
   margin: 0;
+  height: 100%;
+}
+
+#root {
+  height: 100svh;
+  background-color: var(--bg-color);
+  
 }

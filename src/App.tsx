@@ -1,7 +1,12 @@
+import Header from "./components/Header/Header"
+import NavBar from "./components/NavBar/NavBar"
 
 function App() {
   return (
-    <h1>hi</h1>
+    <>
+      <Header />
+      <NavBar />
+    </>
   )
 }
 

@@ -1,0 +1,27 @@
+.nav {
+  background-color: #a7c957;
+}
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav li {
+  font-size: 22px;
+  padding: 10px 10px;
+  transition: transform .2s ease-in-out;
+}
+
+.nav li:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  color: white;
+}
+
+.nav li:active {
+  transform: translateY(5px);
+}
