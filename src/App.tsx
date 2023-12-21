@@ -6,6 +6,15 @@ function App() {
     <>
       <Header />
       <NavBar />
+      <main>
+        <h1>Welcome!</h1>
+        <h2>This is a fake store.</h2>
+        <h2>Do not try to buy anything</h2>
+        <h2>It isn't real!</h2>
+        <div>
+          <span>See products here &rarr;</span> <button>Products</button>
+        </div>
+      </main>
     </>
   )
 }
