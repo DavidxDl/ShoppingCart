@@ -1,14 +1,17 @@
-import { Link } from "react-router-dom"
-import styles from "./NavBar.module.css"
+import { Link } from "react-router-dom";
+import styles from "./NavBar.module.css";
+import ShoppingCartIcon from "../ShoppingCartIcon/ShoppingCartIcon";
+import { item } from "../../routes/App";
 
-export default function NavBar() {
+interface Props {
+  cartCount: item[];
+}
+
+export default function NavBar({ cartCount }: Props) {
   return (
     <nav className={styles.nav}>
       <ul>
-        <Link
-          style={{ textDecoration: "none", color: "inherit" }}
-          to="/"
-        >
+        <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
           <li>Home</li>
         </Link>
 
@@ -19,6 +22,7 @@ export default function NavBar() {
           <li>Products</li>
         </Link>
       </ul>
+      <ShoppingCartIcon cartCount={cartCount} />
     </nav>
-  )
+  );
 }

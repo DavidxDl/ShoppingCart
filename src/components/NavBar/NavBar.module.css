@@ -1,7 +1,7 @@
 .nav {
   background-color: #a7c957;
-
-  box-shadow: 1px 2px 1px rgba(0, 0, 0, .5);
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
+  position: relative;
 }
 
 .nav ul {
@@ -17,9 +17,8 @@
   font-weight: 900;
   padding: 10px 10px;
   max-width: 200px;
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
-
 
 .nav li:hover {
   cursor: pointer;
@@ -30,4 +29,3 @@
 .nav li:active {
   transform: translateY(5px);
 }
-

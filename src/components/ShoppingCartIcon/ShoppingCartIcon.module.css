@@ -1,0 +1,25 @@
+.shoppingCart {
+  width: 40px;
+  position: absolute;
+  right: 40px;
+  top: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.shoppingCart:hover {
+  transform: scale(1.4);
+}
+
+.shoppingCartCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  position: absolute;
+  right: 9px;
+  border-radius: 50%;
+  top: 0;
+  z-index: 1;
+}
