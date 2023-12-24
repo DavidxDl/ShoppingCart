@@ -68,3 +68,8 @@
 .checkout:active {
   transform: translateY(5px);
 }
+
+.closeBtn {
+  background-color: transparent;
+  box-shadow: 1px 1px 1px #6a994e;
+}

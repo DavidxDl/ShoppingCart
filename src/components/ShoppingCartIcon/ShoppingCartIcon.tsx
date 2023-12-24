@@ -13,7 +13,7 @@ export default function ShoppingCartIcon({
   cartCount,
 }: Props) {
   return (
-    <>
+    <div className="cartIconX">
       {cartCount.length > 0 && (
         <div className={styles.shoppingCartCount}>{cartCount.length}</div>
       )}
@@ -44,6 +44,6 @@ export default function ShoppingCartIcon({
           </g>{" "}
         </g>
       </svg>
-    </>
+    </div>
   );
 }

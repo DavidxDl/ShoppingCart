@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { item } from "../Router";
 
 interface Props {
@@ -47,7 +47,7 @@ export default function Products({ cart, setCart }: Props) {
               <div className="card-content">
                 <h2>{product.title}</h2>
                 <p>{product.description}</p>
-                <h3 style={{ fontSize: "23px" }}>{product.price}</h3>
+                <h3 style={{ fontSize: "23px" }}>{product.price}$</h3>
               </div>
               {!cart.includes(product) ? (
                 <>
@@ -65,7 +65,7 @@ export default function Products({ cart, setCart }: Props) {
                   </button>
                 </>
               ) : (
-                <p>added</p>
+                <p>added ✔</p>
               )}
             </div>
           ))
