@@ -1,4 +1,7 @@
 .nav {
+  height: 60px;
+  display: flex;
+  justify-content: center;
   background-color: #a7c957;
   box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
   position: sticky;
@@ -7,7 +10,8 @@
   left: 0;
 }
 
-.nav ul {
+.ul {
+  flex: 1;
   position: relative;
   list-style-type: none;
   margin: 0;
@@ -16,7 +20,7 @@
   justify-content: space-around;
 }
 
-.nav li {
+.li {
   font-size: 22px;
   font-weight: 900;
   padding: 10px 10px;
@@ -24,12 +28,12 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.nav > li:hover {
+.li:hover {
   cursor: pointer;
   transform: scale(1.4);
   color: white;
 }
 
-.nav li:active {
+.li:active {
   transform: translateY(5px);
 }

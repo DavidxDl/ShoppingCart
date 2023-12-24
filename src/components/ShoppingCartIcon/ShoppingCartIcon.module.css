@@ -3,11 +3,11 @@
   position: absolute;
   right: 40px;
   top: 8px;
-  transition: transform 0.2s ease-in-out;
 }
 
 .shoppingCart:hover {
-  transform: scale(1.4);
+  color: black;
+  cursor: pointer;
 }
 
 .shoppingCartCount {

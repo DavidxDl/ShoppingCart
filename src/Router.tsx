@@ -9,6 +9,7 @@ export interface item {
   image: string;
   id: string;
   price: number;
+  quantity: number;
 }
 
 export default function Router() {

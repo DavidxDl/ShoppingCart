@@ -15,7 +15,7 @@ function App({ cart, setCart }: Props) {
   return (
     <>
       <Header />
-      <NavBar cart={cart} />
+      <NavBar cart={cart} setCart={setCart} />
       <main>
         {location.pathname === "/" && (
           <div className={styles.welcome}>

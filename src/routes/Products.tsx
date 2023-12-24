@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
 import { item } from "../Router";
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
 
 export default function Products({ cart, setCart }: Props) {
   const [products, setProducts] = useState<item[]>([]);
+  const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -23,7 +24,14 @@ export default function Products({ cart, setCart }: Props) {
   }, []);
 
   function handleAddToCart(item: item) {
+    if (cart.includes(item) || quantity === 0) return;
+    item.quantity = quantity;
+    setQuantity(1);
     setCart([...cart, item]);
+  }
+
+  function handleQuantityChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setQuantity(Number(e.target.value));
   }
   return (
     <>
@@ -39,10 +47,26 @@ export default function Products({ cart, setCart }: Props) {
               <div className="card-content">
                 <h2>{product.title}</h2>
                 <p>{product.description}</p>
+                <h3 style={{ fontSize: "23px" }}>{product.price}</h3>
               </div>
-              <button onClick={() => handleAddToCart(product)}>
-                Add to cart
-              </button>
+              {!cart.includes(product) ? (
+                <>
+                  <label>
+                    quantity
+                    <input
+                      style={{ width: "50px" }}
+                      type="number"
+                      onChange={handleQuantityChange}
+                      value={quantity}
+                    />
+                  </label>
+                  <button onClick={() => handleAddToCart(product)}>
+                    Add to cart
+                  </button>
+                </>
+              ) : (
+                <p>added</p>
+              )}
             </div>
           ))
         )}
