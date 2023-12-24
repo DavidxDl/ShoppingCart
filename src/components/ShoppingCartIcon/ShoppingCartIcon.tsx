@@ -1,18 +1,24 @@
-import { item } from "../../routes/App";
+import { item } from "../../Router";
 import styles from "./ShoppingCartIcon.module.css";
 
 interface Props {
   color?: string;
   cartCount: item[];
+  handleClick: () => void;
 }
 
-export default function ShoppingCartIcon({ color = "#fff", cartCount }: Props) {
+export default function ShoppingCartIcon({
+  color = "#fff",
+  handleClick,
+  cartCount,
+}: Props) {
   return (
     <>
       {cartCount.length > 0 && (
         <div className={styles.shoppingCartCount}>{cartCount.length}</div>
       )}
       <svg
+        onClick={handleClick}
         className={styles.shoppingCart}
         fill={color}
         version="1.1"

@@ -1,42 +1,52 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header/Header";
-import NavBar from "../components/NavBar/NavBar";
+import { item } from "../Router";
 
-export default function Products() {
-  const [products, setProducts] = useState([]);
+interface Props {
+  cart: item[];
+  setCart: React.Dispatch<React.SetStateAction<item[]>>;
+}
+
+export default function Products({ cart, setCart }: Props) {
+  const [products, setProducts] = useState<item[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getProducts() {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products")
+      const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
       console.log(data);
-      setProducts(data)
+      setProducts(data);
       setLoading(false);
     }
     getProducts();
-  }, [])
+  }, []);
+
+  function handleAddToCart(item: item) {
+    setCart([...cart, item]);
+  }
   return (
     <>
-      <Header />
-      <NavBar />
       <main>
-        {loading
-          ? <h1>Loading...</h1>
-          : products.map(product => (
-            <div key={product.id} className="card" >
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          products.map((product) => (
+            <div key={product.id} className="card">
               <div className="card-img">
                 <img style={{ width: "150px" }} src={product.image} />
               </div>
-              <div className="card-content" >
+              <div className="card-content">
                 <h2>{product.title}</h2>
                 <p>{product.description}</p>
               </div>
-              <button>Add to cart</button>
+              <button onClick={() => handleAddToCart(product)}>
+                Add to cart
+              </button>
             </div>
-          ))}
-      </main >
+          ))
+        )}
+      </main>
     </>
-  )
+  );
 }

@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import ShoppingCartIcon from "../ShoppingCartIcon/ShoppingCartIcon";
-import { item } from "../../routes/App";
+import { item } from "../../Router";
+import { useState } from "react";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 interface Props {
-  cartCount: item[];
+  cart: item[];
 }
 
-export default function NavBar({ cartCount }: Props) {
+export default function NavBar({ cart }: Props) {
+  const [openCart, setOpenCart] = useState(false);
+
   return (
     <nav className={styles.nav}>
       <ul>
@@ -22,7 +26,11 @@ export default function NavBar({ cartCount }: Props) {
           <li>Products</li>
         </Link>
       </ul>
-      <ShoppingCartIcon cartCount={cartCount} />
+      {openCart && <ShoppingCart cart={cart} />}
+      <ShoppingCartIcon
+        handleClick={() => setOpenCart(!openCart)}
+        cartCount={cart}
+      />
     </nav>
   );
 }
