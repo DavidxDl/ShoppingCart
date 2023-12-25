@@ -14,11 +14,17 @@ export default function Products({ cart, setCart }: Props) {
   useEffect(() => {
     async function getProducts() {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products");
-      const data = await response.json();
-      console.log(data);
-      setProducts(data);
-      setLoading(false);
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        if (!response.ok)
+          throw new Error(`Somthing went Wrong ${response.statusText}`);
+        const data = await response.json();
+        setProducts(data);
+      } catch (err: any) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
     }
     getProducts();
   }, []);
@@ -51,7 +57,7 @@ export default function Products({ cart, setCart }: Props) {
               </div>
               {!cart.includes(product) ? (
                 <>
-                  <label>
+                  <label style={{ marginBottom: "8px" }}>
                     quantity
                     <input
                       style={{ width: "50px" }}

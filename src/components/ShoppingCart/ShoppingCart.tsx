@@ -19,7 +19,7 @@ export default function ShoppingCart({ cart, setCart }: Props) {
               <p className={styles.productName}>{item.title}</p>
               <p>quantity: {item.quantity}</p>
               <p>
-                price: <span className={styles.price}>{item.price}</span>
+                price: <span className={styles.price}>{item.price}$</span>
               </p>
               <button
                 className={styles.closeBtn}

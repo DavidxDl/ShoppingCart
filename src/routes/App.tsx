@@ -29,7 +29,6 @@ function App({ cart, setCart }: Props) {
                 <button>Products</button>
               </Link>
             </div>
-            <button>add cart</button>
           </div>
         )}
         <Outlet />
