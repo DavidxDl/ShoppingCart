@@ -34,42 +34,40 @@ export default function Products({ cart, setCart }: Props) {
   }
   return (
     <>
-      <main>
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          products.map((product) => (
-            <div key={product.id} className="card">
-              <div className="card-img">
-                <img style={{ width: "150px" }} src={product.image} />
-              </div>
-              <div className="card-content">
-                <h2>{product.title}</h2>
-                <p>{product.description}</p>
-                <h3 style={{ fontSize: "23px" }}>{product.price}$</h3>
-              </div>
-              {!cart.includes(product) ? (
-                <>
-                  <label style={{ marginBottom: "8px" }}>
-                    quantity
-                    <input
-                      style={{ width: "50px" }}
-                      type="number"
-                      onChange={handleQuantityChange}
-                      value={quantity}
-                    />
-                  </label>
-                  <button onClick={() => handleAddToCart(product)}>
-                    Add to cart
-                  </button>
-                </>
-              ) : (
-                <p>added ✔</p>
-              )}
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        products.map((product) => (
+          <div key={product.id} className="card">
+            <div className="card-img">
+              <img style={{ width: "150px" }} src={product.image} />
             </div>
-          ))
-        )}
-      </main>
+            <div className="card-content">
+              <h2>{product.title}</h2>
+              <p>{product.description}</p>
+              <h3 style={{ fontSize: "23px" }}>{product.price}$</h3>
+            </div>
+            {!cart.includes(product) ? (
+              <>
+                <label style={{ marginBottom: "8px" }}>
+                  quantity
+                  <input
+                    style={{ width: "50px" }}
+                    type="number"
+                    onChange={handleQuantityChange}
+                    value={quantity}
+                  />
+                </label>
+                <button onClick={() => handleAddToCart(product)}>
+                  Add to cart
+                </button>
+              </>
+            ) : (
+              <p>added ✔</p>
+            )}
+          </div>
+        ))
+      )}
     </>
   );
 }
