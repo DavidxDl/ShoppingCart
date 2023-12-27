@@ -6,7 +6,20 @@
   display: flex;
   right: 10px;
   top: 60px;
+  flex-direction: column;
+  align-items: center;
 }
+
+.ul {
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
 .li {
   width: 100%;
   display: flex;
@@ -37,17 +50,6 @@
 
 .ul > li {
   list-style: none;
-}
-
-.ul {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  align-items: center;
-  justify-content: center;
-  max-height: 400px;
-  overflow-y: scroll;
 }
 
 .checkout {

@@ -34,14 +34,13 @@ export default function ShoppingCart({ cart, setCart }: Props) {
           </Fragment>
         ))}
         <hr style={{ color: "#6a994e", width: "100%" }} />
-        <li>
-          <p className={styles.total}>
-            total:{" "}
-            {cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}$
-          </p>
-        </li>
-        <button className={styles.checkout}>checkout</button>
       </ul>
+
+      <p className={styles.total}>
+        total: {cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
+        $
+      </p>
+      <button className={styles.checkout}>checkout</button>
     </div>
   );
 }
