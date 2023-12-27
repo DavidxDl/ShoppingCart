@@ -14,17 +14,10 @@ export default function Products({ cart, setCart }: Props) {
   useEffect(() => {
     async function getProducts() {
       setLoading(true);
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        if (!response.ok)
-          throw new Error(`Somthing went Wrong ${response.statusText}`);
-        const data = await response.json();
-        setProducts(data);
-      } catch (err: any) {
-        console.log(err);
-      } finally {
-        setLoading(false);
-      }
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response.json();
+      setProducts(data);
+      setLoading(false);
     }
     getProducts();
   }, []);
