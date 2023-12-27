@@ -37,7 +37,10 @@ export default function ShoppingCart({ cart, setCart }: Props) {
       </ul>
 
       <p className={styles.total}>
-        total: {cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)}
+        total:{" "}
+        {cart
+          .reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
+          .toFixed(2)}
         $
       </p>
       <button className={styles.checkout}>checkout</button>
