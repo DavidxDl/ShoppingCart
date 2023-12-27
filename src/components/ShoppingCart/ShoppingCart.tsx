@@ -7,7 +7,7 @@ interface Props {
   setCart: React.Dispatch<React.SetStateAction<item[]>>;
 }
 export default function ShoppingCart({ cart, setCart }: Props) {
-  function handleDeleteItem(id) {
+  function handleDeleteItem(id: string) {
     setCart((cart) => cart.filter((item) => item.id !== id));
   }
   return (
