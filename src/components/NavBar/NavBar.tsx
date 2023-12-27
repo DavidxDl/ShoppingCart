@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import ShoppingCartIcon from "../ShoppingCartIcon/ShoppingCartIcon";
 import { item } from "../../Router";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 interface Props {
@@ -14,7 +14,7 @@ export default function NavBar({ cart, setCart }: Props) {
   const [openCart, setOpenCart] = useState(false);
 
   useEffect(() => {
-    function listener(e) {
+    function listener(e: MouseEvent) {
       if (
         e.target === document.querySelector("svg") ||
         e.target === document.querySelector("button")
