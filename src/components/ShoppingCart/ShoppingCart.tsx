@@ -1,17 +1,16 @@
-import { Fragment } from "react";
-import { item } from "../../Router";
+import {
+  ForwardRefRenderFunction,
+  Fragment,
+  forwardRef,
+  useContext,
+} from "react";
+import { CartContext } from "../../Router";
 import styles from "./ShoppingCart.module.css";
 
-interface Props {
-  cart: item[];
-  setCart: React.Dispatch<React.SetStateAction<item[]>>;
-}
-export default function ShoppingCart({ cart, setCart }: Props) {
-  function handleDeleteItem(id: string) {
-    setCart((cart) => cart.filter((item) => item.id !== id));
-  }
+const ShoppingCart: ForwardRefRenderFunction<HTMLDivElement> = (props, ref) => {
+  const { cart, removeFromCart } = useContext(CartContext);
   return (
-    <div className={styles.shoppingCart}>
+    <div className={styles.shoppingCart} ref={ref}>
       <ul className={styles.ul}>
         {cart.map((item, i) => (
           <Fragment key={item.id}>
@@ -23,7 +22,10 @@ export default function ShoppingCart({ cart, setCart }: Props) {
               </p>
               <button
                 className={styles.closeBtn}
-                onClick={() => handleDeleteItem(item.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeFromCart(item.id);
+                }}
               >
                 ❌
               </button>
@@ -46,4 +48,6 @@ export default function ShoppingCart({ cart, setCart }: Props) {
       <button className={styles.checkout}>checkout</button>
     </div>
   );
-}
+};
+
+export default forwardRef(ShoppingCart);

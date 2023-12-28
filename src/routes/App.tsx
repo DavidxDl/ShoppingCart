@@ -1,21 +1,14 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header/Header";
 import NavBar from "../components/NavBar/NavBar";
-import { item } from "../Router";
 import styles from "./App.module.css";
 
-interface Props {
-  cart: item[];
-  setCart: React.Dispatch<React.SetStateAction<item[]>>;
-}
-
-function App({ cart, setCart }: Props) {
+function App() {
   const location = useLocation();
-
   return (
     <>
       <Header />
-      <NavBar cart={cart} setCart={setCart} />
+      <NavBar />
       <main>
         {location.pathname === "/" && (
           <div className={styles.welcome}>

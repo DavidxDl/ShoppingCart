@@ -1,29 +1,24 @@
 import { Link } from "react-router-dom";
 import styles from "./NavBar.module.css";
 import ShoppingCartIcon from "../ShoppingCartIcon/ShoppingCartIcon";
-import { item } from "../../Router";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
-interface Props {
-  cart: item[];
-  setCart: React.Dispatch<SetStateAction<item[]>>;
-}
-
-export default function NavBar({ cart, setCart }: Props) {
+export default function NavBar() {
   const [openCart, setOpenCart] = useState(false);
+  const cartRef = useRef<HTMLDivElement>(null);
+  const cartIconRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function listener(e: MouseEvent) {
       if (
-        e.target === document.querySelector("svg") ||
-        e.target === document.querySelector("button")
+        (cartRef.current && cartRef.current.contains(e.target as Node)) ||
+        (cartIconRef.current && cartIconRef.current.contains(e.target as Node))
       )
         return;
       setOpenCart(false);
     }
-    window.addEventListener("click", listener);
-
+    document.addEventListener("click", listener);
     return () => document.removeEventListener("click", listener);
   }, []);
 
@@ -41,10 +36,14 @@ export default function NavBar({ cart, setCart }: Props) {
           <li className={styles.li}>Products</li>
         </Link>
       </ul>
-      {openCart && <ShoppingCart cart={cart} setCart={setCart} />}
+      {openCart && <ShoppingCart ref={cartRef} />}
       <ShoppingCartIcon
-        handleClick={() => setOpenCart(!openCart)}
-        cartCount={cart}
+        ref={cartIconRef}
+        handleClick={() => {
+          setOpenCart(!openCart);
+          console.log(cartRef);
+          console.log(cartIconRef);
+        }}
       />
     </nav>
   );

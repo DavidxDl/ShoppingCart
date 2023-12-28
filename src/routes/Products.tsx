@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react";
-import { item } from "../Router";
+import { useContext, useEffect, useState } from "react";
+import { CartContext, item } from "../Router";
 
-interface Props {
-  cart: item[];
-  setCart: React.Dispatch<React.SetStateAction<item[]>>;
-}
-
-export default function Products({ cart, setCart }: Props) {
+export default function Products() {
   const [products, setProducts] = useState<item[]>([]);
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
-
+  const { cart, addToCart } = useContext(CartContext);
   useEffect(() => {
     async function getProducts() {
       setLoading(true);
@@ -26,7 +21,7 @@ export default function Products({ cart, setCart }: Props) {
     if (cart.includes(item) || quantity === 0) return;
     item.quantity = quantity;
     setQuantity(1);
-    setCart([...cart, item]);
+    addToCart(item);
   }
 
   function handleQuantityChange(e: React.ChangeEvent<HTMLInputElement>) {
