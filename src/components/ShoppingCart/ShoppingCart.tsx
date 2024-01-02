@@ -3,12 +3,19 @@ import {
   Fragment,
   forwardRef,
   useContext,
+  useMemo,
 } from "react";
 import { CartContext } from "../../Router";
 import styles from "./ShoppingCart.module.css";
 
 const ShoppingCart: ForwardRefRenderFunction<HTMLDivElement> = (props, ref) => {
   const { cart, removeFromCart } = useContext(CartContext);
+
+  const totalPrice = useMemo(() => {
+    return cart
+      .reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
+      .toFixed(2);
+  }, [cart]);
   return (
     <div className={styles.shoppingCart} ref={ref}>
       <ul className={styles.ul}>
@@ -38,13 +45,7 @@ const ShoppingCart: ForwardRefRenderFunction<HTMLDivElement> = (props, ref) => {
         <hr style={{ color: "#6a994e", width: "100%" }} />
       </ul>
 
-      <p className={styles.total}>
-        total:{" "}
-        {cart
-          .reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
-          .toFixed(2)}
-        $
-      </p>
+      <p className={styles.total}>total: {totalPrice}$</p>
       <button className={styles.checkout}>checkout</button>
     </div>
   );
